@@ -54,6 +54,12 @@ hanoi 1  a b c = [(a,b)]
 hanoi n a b c = hanoi (n-1) a c b ++ [(a,b)] ++ (hanoi (n-1)  c b a)
 
 
+-- EX6
+hanoi2 :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+hanoi2 1  a b c d = [(a,d)]
+hanoi2 2  a b c d = [(a,b), (a,d), (b,d)]
+hanoi2 n a b c d = hanoi2 (n-2) a c d b ++ [(a,c), (a,d), (c,d)] ++ hanoi2 (n-2) b a c d
+
 
 
 -- MAIN
@@ -70,6 +76,9 @@ main = do
     print("ex4-2", validate 4012888888881882 == False)
     print("ex5", hanoi 2 "a" "b" "c" == [("a","c"), ("a","b"), ("c","b")])
     print("ex5-2", hanoi 3 "a" "b" "c" )
+    print("ex6-1",length( hanoi 15 "a" "b" "c"))
+    print("ex6-2",length( hanoi2 15 "a" "b" "c" "d"))
+
 
 
 
