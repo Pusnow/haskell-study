@@ -44,6 +44,17 @@ validate :: Integer -> Bool
 validate x = sumDigits(doubleEveryOther(toDigits(x))) `mod` 10 == 0
 
 
+-- EX5
+
+
+type Peg = String
+type Move = (Peg, Peg)
+hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
+hanoi 1  a b c = [(a,b)]
+hanoi n a b c = hanoi (n-1) a c b ++ [(a,b)] ++ (hanoi (n-1)  c b a)
+
+
+
 
 -- MAIN
 
@@ -57,6 +68,8 @@ main = do
     print("ex3-1", sumDigits [16,7,12,5] == 22)
     print("ex4-1", validate 4012888888881881 == True)
     print("ex4-2", validate 4012888888881882 == False)
+    print("ex5", hanoi 2 "a" "b" "c" == [("a","c"), ("a","b"), ("c","b")])
+    print("ex5-2", hanoi 3 "a" "b" "c" )
 
 
 
