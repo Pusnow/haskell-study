@@ -38,6 +38,13 @@ sumDigits (x:xs) = sumDigit x + sumDigits xs
 sumDigits [] = 0
 
 
+-- EX4
+
+validate :: Integer -> Bool
+validate x = sumDigits(doubleEveryOther(toDigits(x))) `mod` 10 == 0
+
+
+
 -- MAIN
 
 main = do
@@ -48,6 +55,8 @@ main = do
     print("ex2-1", doubleEveryOther [8,7,6,5] == [16,7,12,5])
     print("ex2-2", doubleEveryOther [1,2,3] == [1,4,3])
     print("ex3-1", sumDigits [16,7,12,5] == 22)
+    print("ex4-1", validate 4012888888881881 == True)
+    print("ex4-2", validate 4012888888881882 == False)
 
 
 
